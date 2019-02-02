@@ -13,7 +13,7 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
-public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener {
+public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     private static String TAG = "mainLOGS";
     JavaCameraView javaCameraView;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        javaCameraView = (JavaCameraView)findViewById(R.id.java_camera_view);
+        javaCameraView = (JavaCameraView) findViewById(R.id.java_camera_view);
         javaCameraView.setVisibility(SurfaceView.VISIBLE);
         javaCameraView.setCvCameraViewListener(this);
 
@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     }
 
     @Override
-    public Mat onCameraFrame(Mat inputFrame) {
-        mRgba = inputFrame.rgba();
+    public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+       mRgba = inputFrame.rgba();
         return mRgba;
     }
 }
